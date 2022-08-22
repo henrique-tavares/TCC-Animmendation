@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+    recommendation:
+        container_name: annimendation_recommendation
+        build:
+            context: ..
+            dockerfile: .docker/Dockerfile
+            args:
+                - user=python
+        volumes:
+            - ..:/home/python/app
+        ports:
+            - 50051:50051
+        entrypoint: /entrypoint.sh
+        command: tail -f /dev/null
+        extra_hosts:
+            - host.docker.internal:host-gateway

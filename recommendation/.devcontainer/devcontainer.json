@@ -1,0 +1,25 @@
+{
+    "name": "Annimendation-Recommendation",
+    "dockerComposeFile": "../.docker/docker-compose.yml",
+    "service": "recommendation",
+    "shutdownAction": "stopCompose",
+    "workspaceFolder": "/home/python/app",
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "njpwerner.autodocstring",
+        "formulahendry.code-runner",
+        "EditorConfig.EditorConfig"
+    ],
+    "remoteUser": "python",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "fish"
+            }
+        }
+    },
+    "features": {
+        "fish": "latest"
+    }
+}
