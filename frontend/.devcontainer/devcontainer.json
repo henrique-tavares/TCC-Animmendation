@@ -1,0 +1,27 @@
+{
+    "name": "Animmendation_Frontend",
+    "dockerComposeFile": "../.docker/docker-compose.yml",
+    "service": "frontend",
+    "workspaceFolder": "/home/node/app",
+    "extensions": [
+        "EditorConfig.EditorConfig",
+        "christian-kohler.path-intellisense",
+        "esbenp.prettier-vscode",
+        "redhat.vscode-yaml",
+        "jock.svg",
+        "naumovs.color-highlight",
+        "bradlc.vscode-tailwindcss",
+        "Vue.volar"
+    ],
+    "remoteUser": "node",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "fish"
+            }
+        }
+    },
+    "features": {
+        "fish": "latest"
+    }
+}

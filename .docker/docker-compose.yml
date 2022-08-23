@@ -5,6 +5,22 @@ services:
         container_name: annimendation_recommendation
         build:
             context: ..
-            dockerfile: .docker/Dockerfile
+            dockerfile: .docker/recommendation/Dockerfile.prod
         ports:
             - 50051:50051
+
+    frontend:
+        container_name: annimendation_frontend
+        build:
+            context: ..
+            dockerfile: .docker/frontend/Dockerfile.prod
+        ports:
+            - 3000:80
+
+    backend:
+        container_name: annimendation_backend
+        build:
+            context: ..
+            dockerfile: .docker/backend/Dockerfile.prod
+        ports:
+            - 3333:3333
