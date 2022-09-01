@@ -10,7 +10,8 @@
         "njpwerner.autodocstring",
         "formulahendry.code-runner",
         "EditorConfig.EditorConfig",
-        "zxh404.vscode-proto3"
+        "zxh404.vscode-proto3",
+        "christian-kohler.path-intellisense"
     ],
     "remoteUser": "python",
     "customizations": {

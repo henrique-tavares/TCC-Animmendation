@@ -11,5 +11,5 @@ charset = utf-8
 trim_trailing_whitespace = false
 insert_final_newline = false
 
-[*{.yml,.json}]
+[*{.yml,.json,.py}]
 indent_size = 4

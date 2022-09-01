@@ -7,7 +7,7 @@ services:
             context: ..
             dockerfile: .docker/Dockerfile
             args:
-                - user=python
+                user: python
         volumes:
             - ..:/home/python/app
         ports:
