@@ -1,8 +1,7 @@
-from dotenv import load_dotenv
+import logging
 
-load_dotenv("../.env")
-
-from usecase.prepare_data import prepare_data
+from server import serve
 
 if __name__ == "__main__":
-    prepare_data()
+    logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(asctime)s -> %(message)s")
+    serve(port=50051, max_workers=10)
