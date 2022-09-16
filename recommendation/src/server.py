@@ -3,8 +3,8 @@ from concurrent import futures
 
 import grpc
 
-from infrastructure.grpc_config.pb import anime_pb2_grpc
-from infrastructure.grpc_config.services import anime_service
+from infrastructure.grpc.pb import anime_pb2_grpc
+from infrastructure.grpc.services import anime_service
 
 
 def serve(port: int, max_workers: int):

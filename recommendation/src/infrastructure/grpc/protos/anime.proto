@@ -7,7 +7,7 @@ service AnimeService {
 }
 
 message Anime {
-  uint32 id = 1;
+  uint32 mal_id = 1;
   string name = 2;
   float score = 3;
   string genres = 4;
@@ -16,13 +16,12 @@ message Anime {
   uint32 episodes = 7;
   string broadcast_start_date = 8;
   string broadcast_end_date = 9;
-  string season_premiere = 10;
-  string studios = 11;
-  string source = 12;
-  string age_classification = 13;
-  uint32 popularity = 14;
-  uint32 watching = 15;
-  string synopsis = 16;
+  string studios = 10;
+  string source = 11;
+  string age_classification = 12;
+  uint32 popularity = 13;
+  uint32 watching = 14;
+  string synopsis = 15;
 }
 
 message AnimeRating {
@@ -30,6 +29,7 @@ message AnimeRating {
   uint32 anime_id = 2;
   uint32 rating = 3;
   WatchingStatus watching_status = 4;
+  uint32 watched_episodes = 5;
 }
 
 message Void {}

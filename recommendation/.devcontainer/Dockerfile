@@ -2,7 +2,7 @@ FROM python:3.10
 
 ARG user
 
-COPY .docker/entrypoint.sh /entrypoint.sh
+COPY .devcontainer/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 RUN apt-get -y update

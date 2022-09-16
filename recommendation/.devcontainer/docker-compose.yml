@@ -5,7 +5,7 @@ services:
         container_name: annimendation_recommendation
         build:
             context: ..
-            dockerfile: .docker/Dockerfile
+            dockerfile: .devcontainer/Dockerfile
             args:
                 user: python
         volumes:
