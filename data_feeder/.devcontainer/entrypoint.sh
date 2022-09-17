@@ -4,6 +4,10 @@ if [ -f "requirements.txt" ]; then
   pip install -r requirements.txt
 else
   pip install kaggle
+  pip install grpcio
+  pip install grpcio-tools
+  pip install flake8
+  pip install black
 
   pip freeze > requirements.txt
 fi
