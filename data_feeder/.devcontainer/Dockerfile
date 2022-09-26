@@ -6,10 +6,13 @@ ARG uid
 COPY entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
-RUN apk add bash git ncurses --no-cache
+RUN apk add bash git ncurses sudo make --no-cache
 ENV GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
-RUN adduser -s /bin/bash -S -D -u ${uid} ${user}
+RUN adduser -s /bin/bash -S -D -u ${uid} ${user} \
+  && mkdir -p /etc/sudoers.d \
+  && echo "${user} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${user} \
+  && chmod 0440 /etc/sudoers.d/${user}
 
 WORKDIR /home/${user}/TCC-Animmendation/data_feeder
 USER ${user}

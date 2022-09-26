@@ -39,6 +39,7 @@ message RawAnimeRating {
 }
 
 enum WatchingStatus {
+  UNKNOWN = 0;
   CURRENTLY_WATCHING = 1;
   COMPLETED = 2;
   ON_HOLD = 3;
