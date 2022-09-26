@@ -6,14 +6,15 @@ ARG uid
 COPY entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
-RUN apk add bash --no-cache
+RUN apk add bash git ncurses --no-cache
+ENV GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 RUN adduser -s /bin/bash -S -D -u ${uid} ${user}
 
-WORKDIR /home/${user}/app
+WORKDIR /home/${user}/TCC-Animmendation/data_feeder
 USER ${user}
 
-RUN touch ~/.bashrc
+COPY .bashrc /home/${user}/.bashrc
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 

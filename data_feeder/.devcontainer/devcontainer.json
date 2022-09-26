@@ -3,7 +3,7 @@
   "dockerComposeFile": "./docker-compose.yml",
   "service": "data_feeder",
   "shutdownAction": "stopCompose",
-  "workspaceFolder": "/home/python/app",
+  "workspaceFolder": "/home/python/TCC-Animmendation/data_feeder",
   "extensions": [
     "ms-python.python",
     "ms-python.vscode-pylance",
@@ -11,7 +11,8 @@
     "formulahendry.code-runner",
     "EditorConfig.EditorConfig",
     "zxh404.vscode-proto3",
-    "christian-kohler.path-intellisense"
+    "christian-kohler.path-intellisense",
+    "mhutchie.git-graph"
   ],
   "remoteUser": "python",
   "customizations": {
