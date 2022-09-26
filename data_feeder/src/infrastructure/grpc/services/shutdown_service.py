@@ -1,6 +1,6 @@
 import threading
 from ..pb.shutdown_pb2_grpc import ShutdownServiceServicer
-from ..pb.shutdown_pb2 import Void
+from ..pb import shutdown_pb2
 
 
 class ShutdownServicer(ShutdownServiceServicer):
@@ -10,4 +10,4 @@ class ShutdownServicer(ShutdownServiceServicer):
     def Shutdown(self, request, context):
         self._shutdown_event.set()
 
-        return Void()
+        return shutdown_pb2.Void()  # type: ignore

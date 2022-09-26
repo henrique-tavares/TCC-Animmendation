@@ -12,7 +12,7 @@ else
   pip freeze > requirements.txt
 fi
 
-datasets=("anime.csv" "anime_with_synopsis.csv")
+datasets=("anime.csv" "anime_with_synopsis.csv" "animelist.csv")
 for dataset in ${datasets[@]}; do
   if [ ! -f "data/${dataset}" ]; then
     kaggle datasets download hernan4444/anime-recommendation-database-2020 --unzip -f ${dataset} -p data/

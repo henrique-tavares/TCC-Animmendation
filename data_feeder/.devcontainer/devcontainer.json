@@ -3,7 +3,7 @@
   "dockerComposeFile": "./docker-compose.yml",
   "service": "data_feeder",
   "shutdownAction": "stopCompose",
-  "workspaceFolder": "/data_feeder/app",
+  "workspaceFolder": "/home/python/app",
   "extensions": [
     "ms-python.python",
     "ms-python.vscode-pylance",
@@ -13,6 +13,7 @@
     "zxh404.vscode-proto3",
     "christian-kohler.path-intellisense"
   ],
+  "remoteUser": "python",
   "customizations": {
     "vscode": {
       "settings": {

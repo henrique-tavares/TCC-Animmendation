@@ -2,10 +2,15 @@ version: '3.9'
 
 services:
     data_feeder:
-        build: .
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                user: python
+                uid: 1000
         container_name: animmendation_data_feeder_dev
         volumes:
-            - ..:/data_feeder/app
+            - ..:/home/python/app
         environment:
             KAGGLE_USERNAME: ${KAGGLE_USERNAME}
             KAGGLE_KEY: ${KAGGLE_KEY}
