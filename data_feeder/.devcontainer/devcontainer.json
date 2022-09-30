@@ -4,6 +4,7 @@
   "service": "data_feeder",
   "shutdownAction": "stopCompose",
   "workspaceFolder": "/home/python/TCC-Animmendation/data_feeder",
+  "postCreateCommand": "/docker-entrypoint.sh",
   "extensions": [
     "ms-python.python",
     "ms-python.vscode-pylance",
@@ -14,12 +15,5 @@
     "christian-kohler.path-intellisense",
     "mhutchie.git-graph"
   ],
-  "remoteUser": "python",
-  "customizations": {
-    "vscode": {
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
-      }
-    }
-  }
+  "remoteUser": "python"
 }

@@ -3,8 +3,8 @@ version: '3.9'
 services:
     data_feeder:
         build:
-            context: .
-            dockerfile: Dockerfile
+            context: ..
+            dockerfile: .devcontainer/Dockerfile
             args:
                 user: python
                 uid: 1000

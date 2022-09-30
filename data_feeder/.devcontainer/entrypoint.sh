@@ -3,11 +3,10 @@
 if [ -f "requirements.txt" ]; then
   pip install -r requirements.txt
 else
-  pip install kaggle
-  pip install grpcio
-  pip install grpcio-tools
-  pip install flake8
-  pip install black
+  packages=("kaggle" "grpcio" "grpcio-tools" "flake8" "black")
+  for package in ${packages[@]}; do
+    pip install --user ${package}
+  done
 
   pip freeze > requirements.txt
 fi
@@ -20,6 +19,5 @@ for dataset in ${datasets[@]}; do
     rm data/${dataset}.zip
   fi
 done
-
 
 exec "$@"
