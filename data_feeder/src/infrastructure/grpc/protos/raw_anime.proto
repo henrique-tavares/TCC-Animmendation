@@ -1,5 +1,5 @@
 syntax = "proto3";
-package anime;
+package raw_anime;
 
 service RawAnimeService {
   rpc FetchRawAnimes (Void) returns (stream RawAnime) {};

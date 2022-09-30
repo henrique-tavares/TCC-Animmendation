@@ -2,14 +2,14 @@ from typing import Dict
 from entities.raw_anime import RawAnime
 from entities.raw_anime_synopsis import RawAnimeSynopsis
 from entities.raw_anime_rating import RawAnimeRating, WatchingStatus
-from utils.common import handle_integer_conversion, handle_unknown
+from utils.common import handle_integer_conversion, handle_unknown, handle_float_conversion
 
 
 def parse_raw_anime(anime_dict: Dict[str, str]):
     raw_anime = RawAnime(
         mal_id=int(anime_dict["MAL_ID"]),
         name=anime_dict["Name"],
-        score=handle_integer_conversion(anime_dict["Score"]),
+        score=handle_float_conversion(anime_dict["Score"]),
         genres=handle_unknown(anime_dict["Genres"]),
         japanese_name=handle_unknown(anime_dict["Japanese name"]),
         type=handle_unknown(anime_dict["Type"]),

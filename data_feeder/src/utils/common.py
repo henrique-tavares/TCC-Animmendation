@@ -12,3 +12,13 @@ def handle_integer_conversion(text: str):
         return int(text)
     except ValueError:
         return None
+
+
+def handle_float_conversion(text: str):
+    if handle_unknown(text) is None:
+        return None
+
+    try:
+        return float(text)
+    except ValueError:
+        return None

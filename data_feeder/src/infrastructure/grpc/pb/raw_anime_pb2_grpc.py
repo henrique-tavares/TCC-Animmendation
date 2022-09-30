@@ -15,17 +15,17 @@ class RawAnimeServiceStub(object):
             channel: A grpc.Channel.
         """
         self.FetchRawAnimes = channel.unary_stream(
-            "/anime.RawAnimeService/FetchRawAnimes",
+            "/raw_anime.RawAnimeService/FetchRawAnimes",
             request_serializer=raw__anime__pb2.Void.SerializeToString,
             response_deserializer=raw__anime__pb2.RawAnime.FromString,
         )
         self.FetchRawAnimesSynopsis = channel.unary_stream(
-            "/anime.RawAnimeService/FetchRawAnimesSynopsis",
+            "/raw_anime.RawAnimeService/FetchRawAnimesSynopsis",
             request_serializer=raw__anime__pb2.Void.SerializeToString,
             response_deserializer=raw__anime__pb2.RawAnimeSynopsis.FromString,
         )
         self.FetchRawAnimeRatings = channel.unary_stream(
-            "/anime.RawAnimeService/FetchRawAnimeRatings",
+            "/raw_anime.RawAnimeService/FetchRawAnimeRatings",
             request_serializer=raw__anime__pb2.Void.SerializeToString,
             response_deserializer=raw__anime__pb2.RawAnimeRating.FromString,
         )
@@ -71,7 +71,7 @@ def add_RawAnimeServiceServicer_to_server(servicer, server):
             response_serializer=raw__anime__pb2.RawAnimeRating.SerializeToString,
         ),
     }
-    generic_handler = grpc.method_handlers_generic_handler("anime.RawAnimeService", rpc_method_handlers)
+    generic_handler = grpc.method_handlers_generic_handler("raw_anime.RawAnimeService", rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -95,7 +95,7 @@ class RawAnimeService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            "/anime.RawAnimeService/FetchRawAnimes",
+            "/raw_anime.RawAnimeService/FetchRawAnimes",
             raw__anime__pb2.Void.SerializeToString,
             raw__anime__pb2.RawAnime.FromString,
             options,
@@ -124,7 +124,7 @@ class RawAnimeService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            "/anime.RawAnimeService/FetchRawAnimesSynopsis",
+            "/raw_anime.RawAnimeService/FetchRawAnimesSynopsis",
             raw__anime__pb2.Void.SerializeToString,
             raw__anime__pb2.RawAnimeSynopsis.FromString,
             options,
@@ -153,7 +153,7 @@ class RawAnimeService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            "/anime.RawAnimeService/FetchRawAnimeRatings",
+            "/raw_anime.RawAnimeService/FetchRawAnimeRatings",
             raw__anime__pb2.Void.SerializeToString,
             raw__anime__pb2.RawAnimeRating.FromString,
             options,
