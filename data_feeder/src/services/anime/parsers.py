@@ -1,7 +1,7 @@
 from typing import Dict
 from entities.raw_anime import RawAnime
 from entities.raw_anime_synopsis import RawAnimeSynopsis
-from entities.raw_anime_rating import RawAnimeRating, WatchingStatus
+from entities.raw_anime_rating import RawAnimeRating
 from utils.common import handle_integer_conversion, handle_unknown, handle_float_conversion
 
 
@@ -38,19 +38,8 @@ def parse_raw_anime_rating(anime_rating_dict: Dict[str, str]):
         anime_id=int(anime_rating_dict["anime_id"]),
         user_id=int(anime_rating_dict["user_id"]),
         rating=int(anime_rating_dict["rating"]),
-        watching_status=parse_watching_status(anime_rating_dict["watching_status"]),
+        watching_status=handle_integer_conversion(anime_rating_dict["watching_status"]),
         watched_episodes=handle_integer_conversion(anime_rating_dict["watched_episodes"]),
     )
 
     return anime_rating
-
-
-def parse_watching_status(status: str):
-    parsed_status = handle_integer_conversion(status)
-    if parsed_status is None:
-        return None
-
-    try:
-        return WatchingStatus(parsed_status)
-    except ValueError:
-        return None
