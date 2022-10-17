@@ -1,0 +1,25 @@
+{
+    "name": "Animmendation_Dataset_Handler",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "dataset_handler",
+    "workspaceFolder": "/home/python/TCC-Animmendation/dataset_handler",
+    "postCreateCommand": "/docker-entrypoint.sh",
+    "extensions": [
+        "mads-hartmann.bash-ide-vscode",
+        "EditorConfig.EditorConfig",
+        "christian-kohler.path-intellisense",
+        "redhat.vscode-yaml",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "zxh404.vscode-proto3",
+        "trunk.io"
+    ],
+    "remoteUser": "python",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    }
+}

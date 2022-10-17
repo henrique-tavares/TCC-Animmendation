@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+    dataset_handler:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                user: python
+                uid: 1000
+        volumes:
+            - ..:/home/python/TCC-Animmendation/dataset_handler
+            - ../../.git:/home/python/TCC-Animmendation/.git
+            - datasets:/home/python/TCC-Animmendation/dataset_handler/data/datasets
+        environment:
+            KAGGLE_USERNAME: ${KAGGLE_USERNAME}
+            KAGGLE_KEY: ${KAGGLE_KEY}
+
+volumes:
+    datasets:

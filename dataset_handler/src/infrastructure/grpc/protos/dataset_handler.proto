@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package dataset;
+
+service DatasetService {
+  rpc Start (Void) returns (Void) {}
+  rpc Shutdown (Void) returns (Void) {}
+}
+
+message Void {};
