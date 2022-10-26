@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+    dataset_handler:
+        build:
+            context: ..
+            dockerfile: .docker/Dockerfile
+            args:
+                kaggle_username: ${KAGGLE_USERNAME}
+                kaggle_key: ${KAGGLE_KEY}
+        image: neptune076/animmendation_dataset_handler:latest

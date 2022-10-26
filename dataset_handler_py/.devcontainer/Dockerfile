@@ -12,9 +12,8 @@ RUN apt-get -y update && \
     make \
     wget \
     time \
-    sudo \
-    unzip
-    
+    sudo
+
 ENV GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 
 COPY entrypoint.sh /docker-entrypoint.sh
