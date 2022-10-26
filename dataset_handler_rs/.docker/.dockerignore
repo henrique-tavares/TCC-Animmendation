@@ -1,0 +1,4 @@
+.git
+data/datasets/*.csv
+target
+.env

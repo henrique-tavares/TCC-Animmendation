@@ -1,0 +1,25 @@
+{
+    "name": "Animmendation_Dataset_Handler",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "dataset_handler_rs",
+    "workspaceFolder": "/home/rust/TCC-Animmendation/dataset_handler",
+    "postCreateCommand": "/docker-entrypoint.sh",
+    "extensions": [
+        "mads-hartmann.bash-ide-vscode",
+        "EditorConfig.EditorConfig",
+        "christian-kohler.path-intellisense",
+        "redhat.vscode-yaml",
+        "rust-lang.rust-analyzer",
+        "serayuzgur.crates",
+        "tamasfe.even-better-toml",
+        "vadimcn.vscode-lldb"
+    ],
+    "remoteUser": "rust",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    }
+}

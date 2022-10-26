@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+    dataset_handler_rs:
+        build:
+            context: ..
+            dockerfile: .devcontainer/Dockerfile
+            args:
+                kaggle_username: ${KAGGLE_USERNAME}
+                kaggle_key: ${KAGGLE_KEY}
+                user: rust
+                uid: 1000
+        volumes:
+            - ..:/home/rust/TCC-Animmendation/dataset_handler
+            # - datasets:/home/rust/TCC-Animmendation/dataset_handler/data/datasets
+
+volumes:
+    datasets:
