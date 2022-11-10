@@ -2,7 +2,7 @@
 
 out_dir="$1"
 dataset="hernan4444/anime-recommendation-database-2020"
-files=("anime.csv" "anime_with_synopsis.csv" "animelist.csv")
+files=("anime.csv" "animelist.csv")
 
 for file in ${files[@]}; do
   if [ ! -f "${out_dir}/${file}" ]; then

@@ -4,7 +4,7 @@ from . import parse_date
 
 
 def execute(raw_anime_row: pd.Series):
-    aired = raw_anime_row["Aired"]
+    aired = raw_anime_row["aired"]
 
     new_series = _aired_transform(aired if aired is not np.nan else None)
 

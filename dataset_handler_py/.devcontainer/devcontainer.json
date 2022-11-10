@@ -1,9 +1,9 @@
 {
     "name": "Animmendation_Dataset_Handler",
     "dockerComposeFile": "./docker-compose.yml",
-    "service": "dataset_handler",
-    "workspaceFolder": "/home/python/TCC-Animmendation/dataset_handler",
-    "postCreateCommand": "/docker-entrypoint.sh",
+    "service": "dataset_handler_py",
+    "workspaceFolder": "/home/animmendation/tcc_animmendation/dataset_handler",
+    "postCreateCommand": "chmod +x .devcontainer/entrypoint.sh && .devcontainer/entrypoint.sh",
     "extensions": [
         "mads-hartmann.bash-ide-vscode",
         "EditorConfig.EditorConfig",
@@ -11,15 +11,25 @@
         "redhat.vscode-yaml",
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "zxh404.vscode-proto3",
-        "trunk.io"
+        "zxh404.vscode-proto3"
     ],
-    "remoteUser": "python",
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "terminal.integrated.defaultProfile.linux": "bash"
-            }
+    "remoteUser": "animmendation",
+    "remoteEnv": {
+        "PATH": "${containerEnv:PATH}:/home/animmendation/.local/bin"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:1": {
+            "version": "latest",
+            "installZsh": false,
+            "installOhMyZsh": false,
+            "username": "animmendation",
+            "uid": 1000
+        },
+        "ghcr.io/guiyomh/features/fish:0": {
+            "version": "latest"
+        },
+        "ghcr.io/eitsupi/devcontainer-features/go-task:0": {
+            "version": "latest"
         }
     }
 }

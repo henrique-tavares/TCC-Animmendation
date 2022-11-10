@@ -1,17 +1,15 @@
 #!/bin/bash
 
 if [ -f "requirements.txt" ]; then
-  make setup
+  task setup
 else
   packages=("kaggle" "flake8" "black")
-  for package in ${packages[@]}; do
-    pip install ${package}
-  done
+  pip install ${packages[@]}
   
-  make freeze
+  task freeze
 fi
 
-make dataset
+task dataset
 sudo chmod 777 data/datasets
 
 exec "$@"
