@@ -2,17 +2,33 @@ version: "3.9"
 
 services:
     recommendation:
-        container_name: annimendation_recommendation
-        build:
-            context: ..
-            dockerfile: .devcontainer/Dockerfile
-            args:
-                user: python
+        image: python:3.10-slim
         volumes:
-            - ..:/home/python/app
+            - ..:/home/animmendation/tcc_animmendation/recommendation
+            - datasets:/home/animmendation/tcc_animmendation/recommendation/datasets
         ports:
             - 50051:50051
-        entrypoint: /entrypoint.sh
         command: tail -f /dev/null
         extra_hosts:
             - host.docker.internal:host-gateway
+
+    recommendation_db:
+        image: postgres:15
+        ports:
+            - ${DB_PORT:-5432}:5432
+        environment:
+            POSTGRES_USERNAME: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: ${DB_NAME}
+        volumes:
+            - dbdata_recommendation:/var/lib/postgresql/data
+        healthcheck:
+            test: pg_isready -U $$POSTGRES_USERNAME  -d $$POSTGRES_DB
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 5s
+
+volumes:
+    datasets:
+    dbdata_recommendation:

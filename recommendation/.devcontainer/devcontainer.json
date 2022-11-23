@@ -3,7 +3,8 @@
     "dockerComposeFile": "./docker-compose.yml",
     "service": "recommendation",
     "shutdownAction": "stopCompose",
-    "workspaceFolder": "/home/python/app",
+    "postCreateCommand": "chmod +x .devcontainer/entrypoint.sh && .devcontainer/entrypoint.sh",
+    "workspaceFolder": "/home/animmendation/tcc_animmendation/recommendation",
     "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
@@ -11,17 +12,23 @@
         "formulahendry.code-runner",
         "EditorConfig.EditorConfig",
         "zxh404.vscode-proto3",
-        "christian-kohler.path-intellisense"
+        "christian-kohler.path-intellisense",
+        "Prisma.prisma",
+        "tamasfe.even-better-toml"
     ],
-    "remoteUser": "python",
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "terminal.integrated.defaultProfile.linux": "fish"
-            }
-        }
+    "remoteUser": "animmendation",
+    "remoteEnv": {
+      "PYTHONPATH": "/home/animmendation/tcc_animmendation/recommendation/__pypackages__/3.10/lib"
     },
     "features": {
-        "fish": "latest"
+        "ghcr.io/devcontainers/features/common-utils:1": {
+            "version": "latest",
+            "installZsh": false,
+            "installOhMyZsh": false,
+            "username": "animmendation"
+        },
+        "ghcr.io/guiyomh/features/fish:0": {
+            "version": "latest"
+        }
     }
 }

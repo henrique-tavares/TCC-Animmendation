@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider             = "prisma-client-py"
+  interface            = "sync"
+  recursive_type_depth = 5
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Recommendation {
+  baseAnimeId        Int
+  recommendedAnimeId Int
+  distance           Float
+
+  @@id([baseAnimeId, recommendedAnimeId])
+}
+
+model Metadata {
+  key   String @id
+  value String
+}

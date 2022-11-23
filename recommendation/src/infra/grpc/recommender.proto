@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package recommender;
+
+service Recommender {
+  rpc Train (TrainRequest) returns (TrainResponse);
+  rpc GetRecommendations (RecommendationRequest) returns (stream RecommendationResponse);
+}
+
+message TrainRequest {
+  string filePath = 1;
+  int32 maxUserId = 2;
+  int32 totalAnime = 3;
+}
+
+message TrainResponse {
+  bool ok = 1;
+}
+
+message RecommendationRequest {
+  message AnimeRating {
+    int32 id = 1;
+    int32 rating = 2;
+  }
+
+  repeated AnimeRating animes = 1;
+  int32 k = 2;
+}
+
+message RecommendationResponse {
+  int32 animeId = 1;
+  repeated int32 recommendations = 2 [packed=true];
+}
+
+
