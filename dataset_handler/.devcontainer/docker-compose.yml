@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-    dataset_handler_py:
+    dataset_handler:
         build: .
         volumes:
             - ..:/home/animmendation/tcc_animmendation/dataset_handler

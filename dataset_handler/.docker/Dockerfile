@@ -15,13 +15,15 @@ RUN apt-get -y update && \
     wget \
     unzip
 
-RUN sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b usr/local/bin
+RUN curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python -
 
 WORKDIR /tcc_animmendation/dataset_handler
 
 COPY . .
 
-RUN task setup
-RUN task dataset
+RUN pdm install
+RUN chmod +x scripts/download_datasets.sh && \
+    mkdir -p data/raw_datasets && \
+    scripts/download_datasets.sh data/raw_datasets
 
-CMD [ "task", "run" ]
+CMD [ "python", "src/main.py" ]

@@ -1,7 +1,7 @@
 {
     "name": "Animmendation_Dataset_Handler",
     "dockerComposeFile": "./docker-compose.yml",
-    "service": "dataset_handler_py",
+    "service": "dataset_handler",
     "workspaceFolder": "/home/animmendation/tcc_animmendation/dataset_handler",
     "postCreateCommand": "chmod +x .devcontainer/entrypoint.sh && .devcontainer/entrypoint.sh",
     "extensions": [
@@ -26,9 +26,6 @@
             "uid": 1000
         },
         "ghcr.io/guiyomh/features/fish:0": {
-            "version": "latest"
-        },
-        "ghcr.io/eitsupi/devcontainer-features/go-task:0": {
             "version": "latest"
         }
     }

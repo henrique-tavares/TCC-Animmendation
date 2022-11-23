@@ -8,4 +8,4 @@ services:
             args:
                 kaggle_username: ${KAGGLE_USERNAME}
                 kaggle_key: ${KAGGLE_KEY}
-        image: neptune076/animmendation_dataset_handler:py-latest
+        image: neptune076/animmendation_dataset_handler:latest
