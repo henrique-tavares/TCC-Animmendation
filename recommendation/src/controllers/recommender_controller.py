@@ -2,38 +2,40 @@ from typing import List
 
 from loguru import logger
 
-from infra.grpc.recommender_pb2 import (RecommendationRequest,
-                                        RecommendationResponse, TrainRequest,
-                                        TrainResponse)
+from infra.grpc.recommender_pb2 import (
+    RecommendationRequest,
+    RecommendationResponse,
+    Empty,
+    IsTrainedResponse,
+    GroupRecommendationRequest,
+    GroupRecommendationResponse,
+)
 from infra.grpc.recommender_pb2_grpc import RecommenderServicer
 from services.recommender_service import RecommenderService
+from utils.method_logger import MethodLogger
 
 
 class RecommenderController(RecommenderServicer):
-    def Train(self, request: TrainRequest, context):
-        with logger.catch(default=TrainResponse(ok=False)):
-            logger.info("Train method invoked!")
-            RecommenderService.train(
-                dataset_path=request.filePath, total_anime=request.totalAnime, max_user_id=request.maxUserId
-            )
-            logger.info("Train method finished!")
-            return TrainResponse(ok=True)
+    def IsTrained(self, request: Empty, context):
+        with logger.catch(), MethodLogger("IsTrained"):
+            trained = RecommenderService.check_is_trained()
+            return IsTrainedResponse(trained=trained)
+
+    def GetGroupRecommendations(self, request: GroupRecommendationRequest, context):
+        with logger.catch(), MethodLogger("GetBatchedRecommendations"):
+
+            animes_id = RecommenderService.group_nearest_neighbors(list(request.animeIds), request.k)
+
+            return GroupRecommendationResponse(animeIds=animes_id)
 
     def GetRecommendations(self, request: RecommendationRequest, context):
-        with logger.catch():
-            logger.info("GetRecommendations method invoked!")
+        with logger.catch(), MethodLogger("GetRecommendations"):
 
-            parsed_animes_request: List[RecommenderService.AnimeRecommendationInput] = [
-                {
-                    "id": anime.id,
-                    "rating": anime.rating,
-                }
-                for anime in request.animes
-            ]
-
-            for (anime, recommendations) in RecommenderService.recommend(parsed_animes_request, request.k):
-                yield RecommendationResponse(
-                    animeId=anime, recommendations=[r.recommendedAnimeId for r in recommendations]
-                )
-
-            logger.info("GetRecommendations method finished!")
+            recommendations = RecommenderService.nearest_neighbors(request.animeId, request.k)
+            return RecommendationResponse(
+                animeId=request.animeId,
+                recommendations=[
+                    RecommendationResponse.Recommendation(recommendedAnimeId=r.recommendedAnimeId, rank=i + 1)
+                    for i, r in enumerate(recommendations)
+                ],
+            )

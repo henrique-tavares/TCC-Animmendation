@@ -5,14 +5,14 @@ services:
         image: python:3.10-slim
         volumes:
             - ..:/home/animmendation/tcc_animmendation/recommendation
-            - datasets:/home/animmendation/tcc_animmendation/recommendation/datasets
+            # - datasets:/home/animmendation/tcc_animmendation/recommendation/datasets
         ports:
             - 50051:50051
         command: tail -f /dev/null
         extra_hosts:
             - host.docker.internal:host-gateway
 
-    recommendation_db:
+    db:
         image: postgres:15
         ports:
             - ${DB_PORT:-5432}:5432
@@ -30,5 +30,4 @@ services:
             start_period: 5s
 
 volumes:
-    datasets:
     dbdata_recommendation:

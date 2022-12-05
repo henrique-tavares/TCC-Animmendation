@@ -24,3 +24,8 @@ model Metadata {
   key   String @id
   value String
 }
+
+model Tracking {
+  key       String   @id
+  timeStamp DateTime @map("time_stamp")
+}

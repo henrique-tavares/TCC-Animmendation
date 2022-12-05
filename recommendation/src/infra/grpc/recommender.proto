@@ -3,33 +3,40 @@ syntax = "proto3";
 package recommender;
 
 service Recommender {
-  rpc Train (TrainRequest) returns (TrainResponse);
-  rpc GetRecommendations (RecommendationRequest) returns (stream RecommendationResponse);
+  rpc IsTrained (Empty) returns (IsTrainedResponse);
+  rpc GetRecommendations (RecommendationRequest) returns (RecommendationResponse);
+  rpc GetGroupRecommendations (GroupRecommendationRequest) returns (GroupRecommendationResponse);
 }
 
-message TrainRequest {
-  string filePath = 1;
-  int32 maxUserId = 2;
-  int32 totalAnime = 3;
-}
+message Empty {}
 
-message TrainResponse {
-  bool ok = 1;
+message IsTrainedResponse {
+  bool trained = 1;
 }
 
 message RecommendationRequest {
-  message AnimeRating {
-    int32 id = 1;
-    int32 rating = 2;
-  }
-
-  repeated AnimeRating animes = 1;
+  int32 animeId = 1;
   int32 k = 2;
 }
 
 message RecommendationResponse {
+  message Recommendation {
+    int32 recommendedAnimeId = 1;
+    int32 rank = 2;
+  }
+
   int32 animeId = 1;
-  repeated int32 recommendations = 2 [packed=true];
+  repeated Recommendation recommendations = 2;
+}
+
+message GroupRecommendationRequest {
+  repeated int32 animeIds = 1;
+  int32 k = 2;
+}
+
+message GroupRecommendationResponse {
+  repeated int32 animeIds = 1;
+  int32 k = 2;
 }
 
 

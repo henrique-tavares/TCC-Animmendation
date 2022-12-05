@@ -6,32 +6,35 @@ from google.protobuf.internal import builder as _builder
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-
-
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x11recommender.proto\x12\x0brecommender\"G\n\x0cTrainRequest\x12\x10\n\x08\x66ilePath\x18\x01 \x01(\t\x12\x11\n\tmaxUserId\x18\x02 \x01(\x05\x12\x12\n\ntotalAnime\x18\x03 \x01(\x05\"\x1b\n\rTrainResponse\x12\n\n\x02ok\x18\x01 \x01(\x08\"\x8d\x01\n\x15RecommendationRequest\x12>\n\x06\x61nimes\x18\x01 \x03(\x0b\x32..recommender.RecommendationRequest.AnimeRating\x12\t\n\x01k\x18\x02 \x01(\x05\x1a)\n\x0b\x41nimeRating\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06rating\x18\x02 \x01(\x05\"F\n\x16RecommendationResponse\x12\x0f\n\x07\x61nimeId\x18\x01 \x01(\x05\x12\x1b\n\x0frecommendations\x18\x02 \x03(\x05\x42\x02\x10\x01\x32\xae\x01\n\x0bRecommender\x12>\n\x05Train\x12\x19.recommender.TrainRequest\x1a\x1a.recommender.TrainResponse\x12_\n\x12GetRecommendations\x12\".recommender.RecommendationRequest\x1a#.recommender.RecommendationResponse0\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x11recommender.proto\x12\x0brecommender"\x07\n\x05\x45mpty"$\n\x11IsTrainedResponse\x12\x0f\n\x07trained\x18\x01 \x01(\x08"3\n\x15RecommendationRequest\x12\x0f\n\x07\x61nimeId\x18\x01 \x01(\x05\x12\t\n\x01k\x18\x02 \x01(\x05"\xb2\x01\n\x16RecommendationResponse\x12\x0f\n\x07\x61nimeId\x18\x01 \x01(\x05\x12K\n\x0frecommendations\x18\x02 \x03(\x0b\x32\x32.recommender.RecommendationResponse.Recommendation\x1a:\n\x0eRecommendation\x12\x1a\n\x12recommendedAnimeId\x18\x01 \x01(\x05\x12\x0c\n\x04rank\x18\x02 \x01(\x05"9\n\x1aGroupRecommendationRequest\x12\x10\n\x08\x61nimeIds\x18\x01 \x03(\x05\x12\t\n\x01k\x18\x02 \x01(\x05":\n\x1bGroupRecommendationResponse\x12\x10\n\x08\x61nimeIds\x18\x01 \x03(\x05\x12\t\n\x01k\x18\x02 \x01(\x05\x32\x9b\x02\n\x0bRecommender\x12?\n\tIsTrained\x12\x12.recommender.Empty\x1a\x1e.recommender.IsTrainedResponse\x12]\n\x12GetRecommendations\x12".recommender.RecommendationRequest\x1a#.recommender.RecommendationResponse\x12l\n\x17GetGroupRecommendations\x12\'.recommender.GroupRecommendationRequest\x1a(.recommender.GroupRecommendationResponseb\x06proto3'
+)
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'recommender_pb2', globals())
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "recommender_pb2", globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  _RECOMMENDATIONRESPONSE.fields_by_name['recommendations']._options = None
-  _RECOMMENDATIONRESPONSE.fields_by_name['recommendations']._serialized_options = b'\020\001'
-  _TRAINREQUEST._serialized_start=34
-  _TRAINREQUEST._serialized_end=105
-  _TRAINRESPONSE._serialized_start=107
-  _TRAINRESPONSE._serialized_end=134
-  _RECOMMENDATIONREQUEST._serialized_start=137
-  _RECOMMENDATIONREQUEST._serialized_end=278
-  _RECOMMENDATIONREQUEST_ANIMERATING._serialized_start=237
-  _RECOMMENDATIONREQUEST_ANIMERATING._serialized_end=278
-  _RECOMMENDATIONRESPONSE._serialized_start=280
-  _RECOMMENDATIONRESPONSE._serialized_end=350
-  _RECOMMENDER._serialized_start=353
-  _RECOMMENDER._serialized_end=527
+    DESCRIPTOR._options = None
+    _EMPTY._serialized_start = 34
+    _EMPTY._serialized_end = 41
+    _ISTRAINEDRESPONSE._serialized_start = 43
+    _ISTRAINEDRESPONSE._serialized_end = 79
+    _RECOMMENDATIONREQUEST._serialized_start = 81
+    _RECOMMENDATIONREQUEST._serialized_end = 132
+    _RECOMMENDATIONRESPONSE._serialized_start = 135
+    _RECOMMENDATIONRESPONSE._serialized_end = 313
+    _RECOMMENDATIONRESPONSE_RECOMMENDATION._serialized_start = 255
+    _RECOMMENDATIONRESPONSE_RECOMMENDATION._serialized_end = 313
+    _GROUPRECOMMENDATIONREQUEST._serialized_start = 315
+    _GROUPRECOMMENDATIONREQUEST._serialized_end = 372
+    _GROUPRECOMMENDATIONRESPONSE._serialized_start = 374
+    _GROUPRECOMMENDATIONRESPONSE._serialized_end = 432
+    _RECOMMENDER._serialized_start = 435
+    _RECOMMENDER._serialized_end = 718
 # @@protoc_insertion_point(module_scope)

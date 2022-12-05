@@ -17,73 +17,45 @@ else:
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
 @typing_extensions.final
-class TrainRequest(google.protobuf.message.Message):
+class Empty(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    FILEPATH_FIELD_NUMBER: builtins.int
-    MAXUSERID_FIELD_NUMBER: builtins.int
-    TOTALANIME_FIELD_NUMBER: builtins.int
-    filePath: builtins.str
-    maxUserId: builtins.int
-    totalAnime: builtins.int
     def __init__(
         self,
-        *,
-        filePath: builtins.str = ...,
-        maxUserId: builtins.int = ...,
-        totalAnime: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["filePath", b"filePath", "maxUserId", b"maxUserId", "totalAnime", b"totalAnime"]) -> None: ...
 
-global___TrainRequest = TrainRequest
+global___Empty = Empty
 
 @typing_extensions.final
-class TrainResponse(google.protobuf.message.Message):
+class IsTrainedResponse(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    OK_FIELD_NUMBER: builtins.int
-    ok: builtins.bool
+    TRAINED_FIELD_NUMBER: builtins.int
+    trained: builtins.bool
     def __init__(
         self,
         *,
-        ok: builtins.bool = ...,
+        trained: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["ok", b"ok"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["trained", b"trained"]) -> None: ...
 
-global___TrainResponse = TrainResponse
+global___IsTrainedResponse = IsTrainedResponse
 
 @typing_extensions.final
 class RecommendationRequest(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    @typing_extensions.final
-    class AnimeRating(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor
-
-        ID_FIELD_NUMBER: builtins.int
-        RATING_FIELD_NUMBER: builtins.int
-        id: builtins.int
-        rating: builtins.int
-        def __init__(
-            self,
-            *,
-            id: builtins.int = ...,
-            rating: builtins.int = ...,
-        ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal["id", b"id", "rating", b"rating"]) -> None: ...
-
-    ANIMES_FIELD_NUMBER: builtins.int
+    ANIMEID_FIELD_NUMBER: builtins.int
     K_FIELD_NUMBER: builtins.int
-    @property
-    def animes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___RecommendationRequest.AnimeRating]: ...
+    animeId: builtins.int
     k: builtins.int
     def __init__(
         self,
         *,
-        animes: collections.abc.Iterable[global___RecommendationRequest.AnimeRating] | None = ...,
+        animeId: builtins.int = ...,
         k: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["animes", b"animes", "k", b"k"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["animeId", b"animeId", "k", b"k"]) -> None: ...
 
 global___RecommendationRequest = RecommendationRequest
 
@@ -91,17 +63,79 @@ global___RecommendationRequest = RecommendationRequest
 class RecommendationResponse(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
+    @typing_extensions.final
+    class Recommendation(google.protobuf.message.Message):
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+        RECOMMENDEDANIMEID_FIELD_NUMBER: builtins.int
+        RANK_FIELD_NUMBER: builtins.int
+        recommendedAnimeId: builtins.int
+        rank: builtins.int
+        def __init__(
+            self,
+            *,
+            recommendedAnimeId: builtins.int = ...,
+            rank: builtins.int = ...,
+        ) -> None: ...
+        def ClearField(
+            self, field_name: typing_extensions.Literal["rank", b"rank", "recommendedAnimeId", b"recommendedAnimeId"]
+        ) -> None: ...
+
     ANIMEID_FIELD_NUMBER: builtins.int
     RECOMMENDATIONS_FIELD_NUMBER: builtins.int
     animeId: builtins.int
     @property
-    def recommendations(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.int]: ...
+    def recommendations(
+        self,
+    ) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[
+        global___RecommendationResponse.Recommendation
+    ]: ...
     def __init__(
         self,
         *,
         animeId: builtins.int = ...,
-        recommendations: collections.abc.Iterable[builtins.int] | None = ...,
+        recommendations: collections.abc.Iterable[global___RecommendationResponse.Recommendation] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["animeId", b"animeId", "recommendations", b"recommendations"]) -> None: ...
+    def ClearField(
+        self, field_name: typing_extensions.Literal["animeId", b"animeId", "recommendations", b"recommendations"]
+    ) -> None: ...
 
 global___RecommendationResponse = RecommendationResponse
+
+@typing_extensions.final
+class GroupRecommendationRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ANIMEIDS_FIELD_NUMBER: builtins.int
+    K_FIELD_NUMBER: builtins.int
+    @property
+    def animeIds(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.int]: ...
+    k: builtins.int
+    def __init__(
+        self,
+        *,
+        animeIds: collections.abc.Iterable[builtins.int] | None = ...,
+        k: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["animeIds", b"animeIds", "k", b"k"]) -> None: ...
+
+global___GroupRecommendationRequest = GroupRecommendationRequest
+
+@typing_extensions.final
+class GroupRecommendationResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ANIMEIDS_FIELD_NUMBER: builtins.int
+    K_FIELD_NUMBER: builtins.int
+    @property
+    def animeIds(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.int]: ...
+    k: builtins.int
+    def __init__(
+        self,
+        *,
+        animeIds: collections.abc.Iterable[builtins.int] | None = ...,
+        k: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["animeIds", b"animeIds", "k", b"k"]) -> None: ...
+
+global___GroupRecommendationResponse = GroupRecommendationResponse
