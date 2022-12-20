@@ -12,3 +12,4 @@ class Env:
     sftp_port = int(os.getenv("SFTP_PORT") or -1)
     sftp_username = os.getenv("SFTP_USERNAME") or ""
     sftp_password = os.getenv("SFTP_PASSWORD") or ""
+    db_url = os.getenv("DATABASE_URL")

@@ -6,6 +6,12 @@ service Recommender {
   rpc IsTrained (Empty) returns (IsTrainedResponse);
   rpc GetRecommendations (RecommendationRequest) returns (RecommendationResponse);
   rpc GetGroupRecommendations (GroupRecommendationRequest) returns (GroupRecommendationResponse);
+  rpc BatchedGetGroupRecommendations (stream GroupRecommendationRequest) returns (stream GroupRecommendationResponse);
+}
+
+message Recommendation {
+  int32 recommendedAnimeId = 1;
+  int32 rank = 2;
 }
 
 message Empty {}
@@ -16,27 +22,33 @@ message IsTrainedResponse {
 
 message RecommendationRequest {
   int32 animeId = 1;
-  int32 k = 2;
+  optional int32 k = 2;
+  repeated int32 excludedAnimeIds = 3;
 }
 
-message RecommendationResponse {
-  message Recommendation {
-    int32 recommendedAnimeId = 1;
-    int32 rank = 2;
-  }
 
+message RecommendationResponse {
   int32 animeId = 1;
   repeated Recommendation recommendations = 2;
 }
 
 message GroupRecommendationRequest {
   repeated int32 animeIds = 1;
-  int32 k = 2;
+  optional int32 k = 2;
+  repeated int32 excludedAnimeIds = 3;
+}
+message GroupRecommendationResponse {
+  repeated Recommendation recommendations = 1;
 }
 
-message GroupRecommendationResponse {
+message BatchedGroupRecommendationRequest {
   repeated int32 animeIds = 1;
-  int32 k = 2;
+  optional int32 k = 2;
+  repeated int32 excludedAnimeIds = 3;
+}
+
+message BatchedGroupRecommendationResponse {
+  repeated GroupRecommendationResponse recommendations = 1;
 }
 
 

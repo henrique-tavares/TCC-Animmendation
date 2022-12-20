@@ -1,14 +1,13 @@
-from typing import List
-
 from loguru import logger
 
 from infra.grpc.recommender_pb2 import (
-    RecommendationRequest,
-    RecommendationResponse,
     Empty,
-    IsTrainedResponse,
     GroupRecommendationRequest,
     GroupRecommendationResponse,
+    IsTrainedResponse,
+    Recommendation,
+    RecommendationRequest,
+    RecommendationResponse,
 )
 from infra.grpc.recommender_pb2_grpc import RecommenderServicer
 from services.recommender_service import RecommenderService
@@ -22,20 +21,29 @@ class RecommenderController(RecommenderServicer):
             return IsTrainedResponse(trained=trained)
 
     def GetGroupRecommendations(self, request: GroupRecommendationRequest, context):
-        with logger.catch(), MethodLogger("GetBatchedRecommendations"):
+        with logger.catch(), MethodLogger("GetGroupRecommendations"):
 
-            animes_id = RecommenderService.group_nearest_neighbors(list(request.animeIds), request.k)
-
-            return GroupRecommendationResponse(animeIds=animes_id)
+            logger.info("aaaaa")
+            animes_rec = RecommenderService.group_nearest_neighbors(
+                list(request.animeIds), list(request.excludedAnimeIds), request.k
+            )
+            return GroupRecommendationResponse(
+                recommendations=[
+                    Recommendation(recommendedAnimeId=anime_id, rank=i + 1)
+                    for i, (anime_id, distance) in enumerate(animes_rec)
+                ]
+            )
 
     def GetRecommendations(self, request: RecommendationRequest, context):
         with logger.catch(), MethodLogger("GetRecommendations"):
 
-            recommendations = RecommenderService.nearest_neighbors(request.animeId, request.k)
+            recommendations = RecommenderService.nearest_neighbors(
+                request.animeId, request.k, list(request.excludedAnimeIds)
+            )
             return RecommendationResponse(
                 animeId=request.animeId,
                 recommendations=[
-                    RecommendationResponse.Recommendation(recommendedAnimeId=r.recommendedAnimeId, rank=i + 1)
+                    Recommendation(recommendedAnimeId=r.recommendedAnimeId, rank=i + 1)
                     for i, r in enumerate(recommendations)
                 ],
             )

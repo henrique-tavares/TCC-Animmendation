@@ -7,6 +7,7 @@ from loguru import logger
 from controllers.recommender_controller import RecommenderController
 from infra.grpc.recommender_pb2_grpc import add_RecommenderServicer_to_server
 from utils.prisma import prisma
+from utils.pg_conn import pg_conn
 
 if __name__ == "__main__":
     prisma.connect()
@@ -19,6 +20,8 @@ if __name__ == "__main__":
 
     def signal_handler(sig, frame):
         logger.info("Closing the server...")
+        prisma.disconnect()
+        pg_conn.close()
         server.stop(None).wait()
 
     server.start()
@@ -27,3 +30,4 @@ if __name__ == "__main__":
 
     server.wait_for_termination()
     prisma.disconnect()
+    pg_conn.close()

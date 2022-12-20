@@ -1,14 +1,14 @@
-import os
-from pathlib import Path
-from typing import Dict, Iterable, List, cast
-from entities.env import Env
-import pysftp
+from typing import Dict, List
+
 import numpy as np
 import numpy.typing as npt
 import pandas as pd
+import pysftp
 import scipy.sparse as sps
-from utils.prisma import prisma
 from loguru import logger
+
+from entities.env import Env
+from utils.prisma import prisma
 
 
 class KNN:
