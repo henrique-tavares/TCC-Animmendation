@@ -1,0 +1,93 @@
+fragment QueryAnime on Anime {
+  id
+  genres
+  ageClassification
+  rank
+  popularity
+  title
+  score
+  picture
+  mediaType
+  alternativeTitles
+  studios
+  endDate
+  source
+}
+
+query getAnimeBySeason(
+  $season: AnimeSeason!
+  $year: Int!
+  $method: TopAnimeMethod
+  $amount: Int
+  $mediaTypes: [AnimeMediaType!]
+) {
+  getAnimeBySeason(
+    method: $method
+    season: $season
+    year: $year
+    amount: $amount
+    mediaTypes: $mediaTypes
+  ) {
+    ...QueryAnime
+  }
+}
+
+query GetTopAnime(
+  $method: TopAnimeMethod!
+  $title: String
+  $genres: [String!]
+  $mediaTypes: [AnimeMediaType!]
+  $ages: [AnimeAgeClassification!]
+  $sources: [String!]
+  $studios: [String!]
+  $startDate: DateTime
+  $startDateMethod: DateMethod
+  $endDate: DateTime
+  $endDateMethod: DateMethod
+  $nullEndDate: Boolean
+  $amount: Int
+  $offset: Int
+) {
+  getTopAnime(
+    method: $method
+    title: $title
+    genres: $genres
+    mediaTypes: $mediaTypes
+    ages: $ages
+    sources: $sources
+    studios: $studios
+    startDate: $startDate
+    startDateMethod: $startDateMethod
+    endDate: $endDate
+    endDateMethod: $endDateMethod
+    nullEndDate: $nullEndDate
+    amount: $amount
+    offset: $offset
+  ) {
+    ...QueryAnime
+  }
+}
+
+query ListAnimeById($ids: [Int!]!) {
+  listAnimeById(ids: $ids) {
+    ...QueryAnime
+  }
+}
+
+query GetAnimeGenres($amount: Int) {
+  getAnimeGenres(amount: $amount) {
+    genre
+  }
+}
+
+query GetAnimeSources($amount: Int) {
+  getAnimeSources(amount: $amount) {
+    source
+  }
+}
+
+query GetAnimeStudio($amount: Int) {
+  getAnimeStudios(amount: $amount) {
+    studio
+  }
+}

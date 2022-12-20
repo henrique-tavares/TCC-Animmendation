@@ -1,0 +1,10 @@
+# codegen.yml
+
+schema: http://host.docker.internal:4000/graphql
+documents: "./src/graphql/gql/*.graphql"
+generates:
+    ./src/graphql/gen/generated.ts:
+        plugins:
+            - typescript
+            - typescript-operations
+            - typed-document-node

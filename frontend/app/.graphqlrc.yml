@@ -1,0 +1,2 @@
+schema: http://host.docker.internal:4000/graphql
+documents: ./src/graphql/gql/*.graphql

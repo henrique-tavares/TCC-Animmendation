@@ -1,0 +1,49 @@
+query GetAnimeRecommendations($id: Int!, $k: Int!, $excludedAnimeIds: [Int!]!) {
+  getAnimeRecommendations(
+    animeId: $id
+    k: $k
+    excludedAnimeIds: $excludedAnimeIds
+  ) {
+    anime {
+      ...QueryAnime
+    }
+    rank
+  }
+}
+
+query GetGroupRecomendations(
+  $animeIds: [Int!]!
+  $excludedAnimeIds: [Int!]!
+  $genres: [String!]
+  $mediaTypes: [AnimeMediaType!]
+  $ages: [AnimeAgeClassification!]
+  $sources: [String!]
+  $studios: [String!]
+  $startDate: DateTime
+  $startDateMethod: DateMethod
+  $endDate: DateTime
+  $endDateMethod: DateMethod
+  $nullEndDate: Boolean
+  $amount: Int!
+) {
+  getGroupRecommendations(
+    animesId: $animeIds
+    amount: $amount
+    excludedAnimeIds: $excludedAnimeIds
+    ages: $ages
+    endDate: $endDate
+    endDateMethod: $endDateMethod
+    genres: $genres
+    mediaTypes: $mediaTypes
+    nullEndDate: $nullEndDate
+    sources: $sources
+    startDate: $startDate
+    startDateMethod: $startDateMethod
+    studios: $studios
+  ) {
+    anime {
+      ...QueryAnime
+    }
+    rank
+  }
+}

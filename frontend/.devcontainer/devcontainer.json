@@ -1,27 +1,30 @@
 {
-    "name": "Animmendation_Frontend",
-    "dockerComposeFile": "../.docker/docker-compose.yml",
-    "service": "frontend",
-    "workspaceFolder": "/home/node/app",
-    "extensions": [
-        "EditorConfig.EditorConfig",
-        "christian-kohler.path-intellisense",
-        "esbenp.prettier-vscode",
-        "redhat.vscode-yaml",
-        "jock.svg",
-        "naumovs.color-highlight",
-        "bradlc.vscode-tailwindcss",
-        "Vue.volar"
-    ],
-    "remoteUser": "node",
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "terminal.integrated.defaultProfile.linux": "fish"
-            }
-        }
+  "name": "Animmendation_Frontend",
+  "dockerComposeFile": "./docker-compose.yml",
+  "service": "frontend",
+  "workspaceFolder": "/home/animmendation/tcc_animmendation/frontend",
+  "extensions": [
+    "EditorConfig.EditorConfig",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+    "redhat.vscode-yaml",
+    "jock.svg",
+    "naumovs.color-highlight",
+    "bradlc.vscode-tailwindcss",
+    "Vue.volar",
+    "GraphQL.vscode-graphql"
+  ],
+  "remoteUser": "animmendation",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {
+      "version": "latest",
+      "installZsh": false,
+      "installOhMyZsh": false,
+      "username": "animmendation",
+      "uid": 1000
     },
-    "features": {
-        "fish": "latest"
+    "ghcr.io/guiyomh/features/fish:0": {
+      "version": "latest"
     }
+  }
 }
