@@ -7,6 +7,7 @@ ARG kaggle_key
 
 ENV KAGGLE_USERNAME=${kaggle_username}
 ENV KAGGLE_KEY=${kaggle_key}
+ENV PYTHONPATH=/tcc_animmendation/dataset_handler/__pypackages__/3.10/lib
 
 RUN apt-get -y update && \
     apt-get install -y --no-install-recommends \
@@ -15,7 +16,7 @@ RUN apt-get -y update && \
     wget \
     unzip
 
-RUN curl -sSL https://raw.githubusercontent.com/pdm-project/pdm/main/install-pdm.py | python -
+RUN pip install pdm
 
 WORKDIR /tcc_animmendation/dataset_handler
 

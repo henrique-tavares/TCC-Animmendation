@@ -5,12 +5,13 @@ services:
         build: .
         volumes:
             - ..:/home/animmendation/tcc_animmendation/dataset_handler
-            # - datasets:/home/python/TCC-Animmendation/dataset_handler/data/datasets
+            # - ../../datasets:/home/python/TCC-Animmendation/dataset_handler/data/datasets
         environment:
             KAGGLE_USERNAME: ${KAGGLE_USERNAME}
             KAGGLE_KEY: ${KAGGLE_KEY}
         env_file: ../.env
         command: tail -f /dev/null
-
-volumes:
-    datasets:
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+    # volumes:
+    # datasets:

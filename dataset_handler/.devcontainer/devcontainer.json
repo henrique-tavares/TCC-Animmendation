@@ -15,7 +15,7 @@
     ],
     "remoteUser": "animmendation",
     "remoteEnv": {
-        "PATH": "${containerEnv:PATH}:/home/animmendation/.local/bin"
+        "PYTHONPATH": "/home/animmendation/tcc_animmendation/dataset_handler/__pypackages__/3.10/lib"
     },
     "features": {
         "ghcr.io/devcontainers/features/common-utils:1": {
